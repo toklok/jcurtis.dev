@@ -1,0 +1,23 @@
+{
+  "name": "@example/minimal",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "format": "prettier --write '**/*.{ts,tsx,scss,json,md,astro}'"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^3.3.0",
+    "astro": "^0.22.9",
+    "prettier": "^2.5.1",
+    "prettier-plugin-astro": "^0.0.11"
+  },
+  "dependencies": {
+    "@astrojs/renderer-preact": "^0.4.0",
+    "graphql": "^16.2.0",
+    "preact": "^10.6.4"
+  }
+}
