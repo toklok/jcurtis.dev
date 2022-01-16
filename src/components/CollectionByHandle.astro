@@ -3,7 +3,23 @@ const response = await fetch(
   `${import.meta.env.PUBLIC_BASE_URL}/api/post-collection`,
   { method: "POST" }
 );
-const shopName = await response.json();
+const collection = await response.json();
 ---
 
-<p>My collection</p>
+<section>
+  <h3>{collection.data.collectionByHandle.description}</h3>
+  <div class="collection-images">
+    {collection.data.collectionByHandle.products.edges.map((el) => {
+      return el.node.images.edges.map((img) => {
+        return `<img 
+                    loading="lazy" 
+                    srcset="${img.node.thumbnail} 320w, 
+                    ${img.node.regular} 400w, 
+                    ${img.node.retina} 2x" 
+                    src="${img.node.regular}" 
+                    alt="${img.node.altText}"
+                >`;
+      });
+    })}
+  </div>
+</section>
