@@ -1,0 +1,48 @@
+---
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link
+      rel="preload"
+      href="https://internet_marketing_near_me.storage.googleapis.com/fonts/Anybody[slnt,wdth,wght].woff2"
+      as="font"
+      type="font/woff2"
+      importance="high"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://internet_marketing_near_me.storage.googleapis.com/fonts/Trispace[wdth,wght].woff2"
+      as="font"
+      type="font/woff2"
+      importance="high"
+      crossorigin
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href={Astro.resolve("../styles/global.css")}
+    />
+  </head>
+
+  <body>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <div>
+        &copy; {new Date().getFullYear()} Joseph Curtis
+        <small>🚀 Built by Astro</small>
+        <small>⚡ Powered by Cloudflare Pages</small>
+      </div>
+    </footer>
+  </body>
+</html>

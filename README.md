@@ -4,14 +4,16 @@
 
 I need a personal website to show that I am an actual person and not some mythilogical computer nerd.
 
-## How to build?
+## 🧞 How to build?
 
-You need to have matching environment variables inside Cloudflare Pages for some functionality
+All commands are run from the root of the project, from a terminal:
 
-```cli
-  pnpm install
-  pnpm run dev
-```
+| Command            | Action                                       |
+| :----------------- | :------------------------------------------- |
+| `pnpm install`     | Installs dependencies                        |
+| `pnpm run dev`     | Starts local dev server at `localhost:3000`  |
+| `pnpm run build`   | Build your production site to `./dist/`      |
+| `pnpm run preview` | Preview your build locally, before deploying |
 
 ## Who am I?
 

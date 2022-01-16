@@ -1,6 +1,6 @@
 {
-  "name": "@example/minimal",
-  "version": "0.0.1",
+  "name": "jcurtis-blog",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -10,14 +10,16 @@
     "format": "prettier --write '**/*.{ts,tsx,scss,json,md,astro}'"
   },
   "devDependencies": {
+    "@astrojs/renderer-preact": "^0.4.0",
     "@cloudflare/workers-types": "^3.3.0",
     "astro": "^0.22.9",
     "prettier": "^2.5.1",
-    "prettier-plugin-astro": "^0.0.11"
+    "prettier-plugin-astro": "^0.0.11",
+    "vite-imagetools": "^4.0.3"
   },
   "dependencies": {
-    "@astrojs/renderer-preact": "^0.4.0",
     "graphql": "^16.2.0",
+    "node-fetch": "^3.1.1",
     "preact": "^10.6.4"
   }
 }

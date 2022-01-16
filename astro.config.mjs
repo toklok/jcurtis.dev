@@ -1,3 +1,6 @@
+import path from 'path';
+import { imagetools } from 'vite-imagetools'
+
 // Full Astro Configuration API Documentation:
 // https://docs.astro.build/reference/configuration-reference
 
@@ -9,5 +12,19 @@
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
   // Comment out "renderers: []" to enable Astro's default component support.
-  renderers: ['@astrojs/renderer-preact']
+  renderers: ['@astrojs/renderer-preact'],
+  buildOptions: {
+    sitemap: true,
+    site: 'https://jcurtis.dev/',
+  },
+  vite: {
+    resolve: {
+      alias: {
+        $src: path.resolve('./src'),
+        $components: path.resolve('./src/components'),
+        $layouts: path.resolve('./src/layouts'),
+      },
+    },
+    plugins: [imagetools()]
+  },
 });

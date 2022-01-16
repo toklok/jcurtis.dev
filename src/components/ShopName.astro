@@ -1,0 +1,9 @@
+---
+const response = await fetch(
+  `${import.meta.env.PUBLIC_BASE_URL}/api/get-store`,
+  { method: "POST" }
+);
+const shopName = await response.json();
+---
+
+<p>The store name I currently run is called: {shopName.data.shop.name}</p>

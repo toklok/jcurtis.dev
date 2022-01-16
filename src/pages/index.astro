@@ -1,37 +1,20 @@
 ---
-import BaseHead from "../layouts/BaseHead.astro";
-
-const response = await fetch(`${import.meta.env.PUBLIC_BASE_URL}/api/get-store`, { method: "POST" });
-const location = await response.json();
+import BaseLayout from "$layouts/BaseLayout.astro";
+import ShopName from "$components/ShopName.astro";
+import CollectionByHandle from "$components/CollectionByHandle.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead
-      title="Joseph Curtis | Full Stack Developer"
-      description="A whole site dedicated to Joseph Curtis"
-    />
-  </head>
-
-  <body>
-    <main>
-      <div></div>
-      <section>
-        <h1>👋 My name is Joseph Curtis</h1>
-        <h2>
-          I am an Ecommerce professional, Full Stack Developer and Revenue
-          Optimizer.
-        </h2>
-        <p>Your location is: {location.data.shop.name}</p>
-      </section>
-    </main>
-    <footer>
-      <div>
-        &copy; {new Date().getFullYear()} Joseph Curtis
-        <small>🚀 Built by Astro</small>
-        <small>⚡ Powered by Cloudflare Pages</small>
-      </div>
-    </footer>
-  </body>
-</html>
+<BaseLayout
+  title="Joseph Curtis | Full Stack Developer"
+  description="A whole site dedicated to Joseph Curtis"
+>
+  <div></div>
+  <section>
+    <h1>👋 My name is Joseph Curtis</h1>
+    <h2>
+      I am an Ecommerce professional, Full Stack Developer and Revenue
+      Optimizer.
+    </h2>
+    <ShopName />
+  </section>
+</BaseLayout>
