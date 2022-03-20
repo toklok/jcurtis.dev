@@ -1,5 +1,9 @@
 import path from 'path';
-import { imagetools } from 'vite-imagetools'
+import {fileURLToPath} from 'url';
+import astroImagePlugin from "astro-imagetools/plugin";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Full Astro Configuration API Documentation:
 // https://docs.astro.build/reference/configuration-reference
@@ -18,13 +22,6 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
     site: 'https://jcurtis.dev/',
   },
   vite: {
-    resolve: {
-      alias: {
-        $src: path.resolve('./src'),
-        $components: path.resolve('./src/components'),
-        $layouts: path.resolve('./src/layouts'),
-      },
-    },
-    plugins: [imagetools()]
+    plugins: [astroImagePlugin]
   },
 });

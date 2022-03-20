@@ -26,11 +26,9 @@ const { title, description } = Astro.props;
       importance="high"
       crossorigin
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href={Astro.resolve("../styles/global.css")}
-    />
+    <style global>
+      @import "../styles/global.css";
+    </style>
   </head>
 
   <body>
@@ -42,6 +40,7 @@ const { title, description } = Astro.props;
         &copy; {new Date().getFullYear()} Joseph Curtis
         <small>🚀 Built by Astro</small>
         <small>⚡ Powered by Cloudflare Pages</small>
+        <small><a href="/accessibility">Accessibility Statement</a></small>
       </div>
     </footer>
   </body>
