@@ -1,5 +1,5 @@
 ---
-import Image from "astro-imagetools";
+import { Img } from "astro-imagetools/components";
 
 const response = await fetch(
   `${import.meta.env.PUBLIC_BASE_URL}/api/post-collection`,
@@ -13,15 +13,14 @@ const collection = await response.json();
   <div class="collection-images">
     {collection.data.collectionByHandle.products.edges.map((el) => {
       return el.node.images.edges.map((img) => {
+        const { original, altText } = img.node;
         return (
-          <Image
-            src={img.node.original}
-            alt={img.node.altText}
+          <Img
+            src={original}
+            alt={altText}
             width={400}
             height={400}
-            preload="avif"
-            format={["avif", "webp"]}
-            fallbackFormat="jpg"
+            format="webp"
           />
         );
       });
