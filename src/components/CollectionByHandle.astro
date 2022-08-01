@@ -1,18 +1,19 @@
 ---
 import { Img } from "astro-imagetools/components";
+import { ICollection } from "../types/main.interface";
 
 const response = await fetch(
   `${import.meta.env.PUBLIC_BASE_URL}/api/post-collection`,
-  { method: "POST" }
+  { method: "POST", body: "best-sellers" }
 );
-const collection = await response.json();
+const collection: ICollection = await response.json();
 ---
 
 <section>
   <h3>{collection.data.collectionByHandle.description}</h3>
   <div class="collection-images">
-    {collection.data.collectionByHandle.products.edges.map((el) => {
-      return el.node.images.edges.map((img) => {
+    {collection.data.collectionByHandle.products.edges.map((image) => {
+      return image.node.images.edges.map((img) => {
         const { original, altText } = img.node;
         return (
           <Img

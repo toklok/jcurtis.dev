@@ -1,12 +1,15 @@
-export async function onRequestPost({ env, query }) {
+export async function onRequestPost({ request, env, query }) {
+  const { handle } = await request.json();
+
   const collectionQuery = `query GetCollection($handle: String!) {
     collectionByHandle(handle: $handle) {
       description
-      products(first: 30) {
+      products(first: 5) {
         edges {
           node {
+            id
             description
-            images(first: 30) {
+            images(first: 5) {
               edges {
                 node {
                   ... on Image {
@@ -38,7 +41,7 @@ export async function onRequestPost({ env, query }) {
     },
     body: JSON.stringify({
       query: collectionQuery,
-      variables: { handle: "best-sellers" },
+      variables: { handle: handle },
     }),
   })
     .then((res) => {
