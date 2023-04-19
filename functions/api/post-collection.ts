@@ -48,7 +48,7 @@ export async function onRequestPost({ env, query }) {
         throw Error("Response isn't OK");
       }
     })
-    .catch((error) => {
+    .catch(() => {
       return new Response("Error", { status: 500 });
     });
 

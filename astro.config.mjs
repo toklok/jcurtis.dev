@@ -1,7 +1,8 @@
 import path from 'path';
-import {fileURLToPath} from 'url';
-import astroImagePlugin from "astro-imagetools/plugin";
-
+import { fileURLToPath } from 'url';
+import { astroImageTools } from "astro-imagetools";
+import { defineConfig } from "astro/config";
+import lit from "@astrojs/lit";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -14,14 +15,12 @@ const __dirname = path.dirname(__filename);
 // You can disable this by removing "@ts-check" and `@type` comments below.
 
 // @ts-check
-export default /** @type {import('astro').AstroUserConfig} */ ({
+
+
+// https://astro.build/config
+export default defineConfig( /** @type {import('astro').AstroUserConfig} */{
   // Comment out "renderers: []" to enable Astro's default component support.
-  renderers: ['@astrojs/renderer-preact'],
-  buildOptions: {
-    sitemap: true,
-    site: 'https://jcurtis.dev/',
-  },
-  vite: {
-    plugins: [astroImagePlugin]
-  },
+  site: 'https://jcurtis.dev/',
+  sitemap: true,
+  integrations: [lit(), astroImageTools]
 });

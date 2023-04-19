@@ -1,30 +1,33 @@
 ---
-import Image from "astro-imagetools";
+import { Img } from "astro-imagetools/components";
+import { flattenConnection } from "../utils/flattenConnection";
 
 const response = await fetch(
   `${import.meta.env.PUBLIC_BASE_URL}/api/post-collection`,
   { method: "POST" }
 );
-const collection = await response.json();
+const { data: { collectionByHandle: { description, products } }} = await response.json();
 ---
 
 <section>
-  <h3>{collection.data.collectionByHandle.description}</h3>
   <div class="collection-images">
-    {collection.data.collectionByHandle.products.edges.map((el) => {
-      return el.node.images.edges.map((img) => {
-        return (
-          <Image
-            src={img.node.original}
-            alt={img.node.altText}
-            width={400}
-            height={400}
-            preload="avif"
-            format={["avif", "webp"]}
-            fallbackFormat="jpg"
-          />
-        );
-      });
-    })}
+    <h1>{description}</h1>
+    <div class="collection-images">
+      {products.edges.map(({ node: { images }}) => {
+        return flattenConnection(images).map(({original, altText}) => {
+          return (
+            <Img
+              src={original}
+              alt={altText}
+              width={400}
+              height={400}
+              preload="avif"
+              format="webp"
+              formatOptions={["avif", "webp"]}
+            />
+          );
+        });
+      })}
+    </div>
   </div>
 </section>
